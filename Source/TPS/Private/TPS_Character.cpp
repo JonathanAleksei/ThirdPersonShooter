@@ -52,7 +52,7 @@ void ATPS_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	PlayerInputComponent->BindAxis("MoveForward", this, &ATPS_Character::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ATPS_Character::MoveRight);
 	
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
-	PlayerInputComponent->BindAction("StopJumping", IE_Pressed, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ATPS_Character::Jump);
+	PlayerInputComponent->BindAction("StopJumping", IE_Pressed, this, &ATPS_Character::Jump);
 }
 
