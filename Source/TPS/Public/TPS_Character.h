@@ -23,6 +23,10 @@ protected:
 
 	void MoveRight(float value);
 
+	virtual void Jump() override;
+
+	virtual void StopJumping() override;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

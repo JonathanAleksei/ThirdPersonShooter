@@ -27,6 +27,16 @@ void ATPS_Character::MoveRight(float value)
 	AddMovementInput(GetActorRightVector() * value);
 }
 
+void ATPS_Character::Jump()
+{
+	Super::Jump();
+}
+
+void ATPS_Character::StopJumping()
+{
+	Super::StopJumping();
+}
+
 // Called every frame
 void ATPS_Character::Tick(float DeltaTime)
 {
@@ -41,5 +51,8 @@ void ATPS_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ATPS_Character::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ATPS_Character::MoveRight);
+	
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("StopJumping", IE_Pressed, this, &ACharacter::StopJumping);
 }
 
