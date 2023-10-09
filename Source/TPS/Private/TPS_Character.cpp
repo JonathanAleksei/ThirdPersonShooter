@@ -32,6 +32,11 @@ void ATPS_Character::Jump()
 	Super::Jump();
 }
 
+void ATPS_Character::AddControllerPitchInput(float value)
+{
+	Super::AddControllerPitchInput(bIsLookInversion? -value : value);
+}
+
 void ATPS_Character::StopJumping()
 {
 	Super::StopJumping();
@@ -51,8 +56,13 @@ void ATPS_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ATPS_Character::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ATPS_Character::MoveRight);
+
+	PlayerInputComponent->BindAxis("LookUp", this, &ATPS_Character::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("LookRight", this, &ACharacter::AddControllerYawInput);
 	
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ATPS_Character::Jump);
 	PlayerInputComponent->BindAction("StopJumping", IE_Pressed, this, &ATPS_Character::Jump);
 }
+
+
 
