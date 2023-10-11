@@ -6,10 +6,17 @@
 #include "GameFramework/Character.h"
 #include "TPS_Character.generated.h"
 
+class UCameraComponent;
+
 UCLASS()
 class TPS_API ATPS_Character : public ACharacter
 {
 	GENERATED_BODY()
+	
+protected:
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components");
+	UCameraComponent* FPSCameraComponent;
 
 protected:
 

@@ -2,11 +2,18 @@
 
 #include "TPS/Public/TPS_Character.h"
 
+#include "Camera/CameraComponent.h"
+
+
 // Sets default values
 ATPS_Character::ATPS_Character()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	FPSCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FPS_CameraComponent"));
+	FPSCameraComponent-> bUsePawnControlRotation = true;
+	FPSCameraComponent-> SetupAttachment(RootComponent);
 
 }
 
