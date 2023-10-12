@@ -11,9 +11,11 @@ ATPS_Character::ATPS_Character()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	FPSCameraSocketName = "SCK_Camera";
+
 	FPSCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FPS_CameraComponent"));
 	FPSCameraComponent-> bUsePawnControlRotation = true;
-	FPSCameraComponent-> SetupAttachment(RootComponent);
+	FPSCameraComponent-> SetupAttachment(GetMesh(), FPSCameraSocketName);
 
 }
 
